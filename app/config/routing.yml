@@ -1,0 +1,11 @@
+base_app:
+    resource: "@BaseAppBundle/Resources/config/routing.yml"
+    prefix:   /
+
+base_data_access:
+    resource: "@BaseDataAccessBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

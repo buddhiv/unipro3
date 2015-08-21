@@ -1,0 +1,3 @@
+base_data_access_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BaseDataAccessBundle:Default:index }

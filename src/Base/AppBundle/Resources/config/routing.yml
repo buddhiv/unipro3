@@ -1,0 +1,7 @@
+base_app_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BaseAppBundle:Default:index }
+
+base_app_test:
+    path:     /test
+    defaults: { _controller: BaseAppBundle:Test:test }
