@@ -8,11 +8,20 @@
  */
 
 //namespace login;
+
+//use Base\AppBundle\Controller\DefaultController;
+use Base\DataAccessBundle\Entity\Student;
+//use Base\DataAccessBundle\Controller;
+
 include_once '../libs/ussd/MoUssdReceiver.php';
 include_once '../libs/ussd/MtUssdSender.php';
 include_once '../libs/log.php';
+include_once '../../src/Base/DataAccessBundle/Entity/Student.php';
+//include_once '../../src/Base/DataAccessBundle/Controller/DefaultController.php';
+
 
 ini_set('error_log', 'ussd-app-error.log');
+//$dc =new DefaultController();
 
 $receiver = new MoUssdReceiver(); // Create the Receiver object
 
@@ -29,7 +38,7 @@ $version = $receiver->getVersion(); // get the version
 $sessionId = $receiver->getSessionId(); // get the session ID;
 $ussdOperation = $receiver->getUssdOperation(); // get the ussd operation
 
-$category;
+
 
 logFile("[ content=$content, address=$address, requestId=$requestId, applicationId=$applicationId, encoding=$encoding, version=$version, sessionId=$sessionId, ussdOperation=$ussdOperation ]");
 
@@ -45,11 +54,17 @@ $responseMsg = array(
                     3.Entertainment
                     99.Back",
     "jobs"=> "You have received following jobs",
-    "selected" =>"You selected
+    "selected" =>"
                         1.Confirm registration
                     99. Back",
     "registered" => "Thank you for register in our service
                       Now you will receive jobs in selected category "
+);
+
+$categories = array(
+    "1" => "Tech",
+    "2" => "Business",
+    "3" => "Entertainment"
 );
 
 logFile("Previous Menu is := " . $_SESSION['menu-Opt']); //Get previous menu number
@@ -73,9 +88,6 @@ if (($receiver->getUssdOperation()) == "mo-cont") {
                 case "2":
                     $menuName = "jobs";
                     break;
-                case "3":
-                    $menuName = "careers";
-                    break;
                 default:
                     $menuName = "main";
                     break;
@@ -87,6 +99,7 @@ if (($receiver->getUssdOperation()) == "mo-cont") {
             switch ($receiver->getMessage()) {
                 case "1":
                     $_SESSION['cat']="1";
+
                     break;
                 case "2":
                     $_SESSION['cat']="2";
@@ -104,15 +117,19 @@ if (($receiver->getUssdOperation()) == "mo-cont") {
             }
             $menuName = "selected";
             $_SESSION['menu-Opt'] = $menuName;
+            $responseMsg[$menuName]="You have selected"." " .$categories[$_SESSION['cat']].$responseMsg[$menuName];
             break;
 
         case "selected":
             switch ($receiver->getMessage()) {
                 case "1":
                     $menuName = "registered";
+
                     //add to database
                     //_SESSION['cat']
                     //$address
+
+                  //  $dc->persistStudent();
                     break;
                 case "99":
                     $menuName = "register";
