@@ -1,3 +1,11 @@
 base_data_access_homepage:
     path:     /hello/{name}
     defaults: { _controller: BaseDataAccessBundle:Default:index }
+
+base_home:
+    path:     /home
+    defaults: { _controller: BaseDataAccessBundle:Default:home }
+
+enter_job:
+    path:     /enterJob
+    defaults: { _controller: BaseDataAccessBundle:Default:enterJob }

@@ -1,0 +1,65 @@
+<! DOCTYPE HTML>
+<html lang="en">
+<head>
+    {% block stylesheets %}
+        <link href="{{ asset('bundles/basedataaccess/css/uniployer.css') }}" type="text/css" rel="stylesheet"/>
+        <link href="{{ asset('bundles/basedataaccess/css/bootstrap.css') }}" type="text/css" rel="stylesheet"/>
+        <link href="{{ asset('bundles/basedataaccess/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>
+        <link href="{{ asset('bundles/basedataaccess/css/bootstrap-theme.css') }}" type="text/css" rel="stylesheet"/>
+        <link href="{{ asset('bundles/basedataaccess/css/bootstrap-theme.min.css') }}" type="text/css"
+              rel="stylesheet"/>
+    {% endblock %}
+
+    {% block javascripts %}
+        <script src="{{ asset('bundles/basedataaccess/js/bootstrap.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/basedataaccess/js/bootstrap.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/basedataaccess/js/jquery-1.9.1.min.js') }}" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.carousel').carousel();
+            });
+        </script>
+
+    {% endblock %}
+
+    <title>UniPloyer Home</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!--Menu content start-->
+        <div style="margin-left: 90px; margin-right: 90px">
+            {#<div class="navbar-header">#}
+            {#<a class="navbar-brand" href="#" style="margin-top: -12px">#}
+            {#<img src="images/Logo03_mini_small.jpg" title="Home" alt="" id="navbar-logo">#}
+            {#</a>#}
+            {#</div>#}
+            <div>
+                <div class="text-center center-block">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" data-toggle="tooltip" title="Homepage" style="font-size: 18px">
+                                <h3><span class="label label-default">Home</span></h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tooltip" title="Read about us" style="font-size: 18px">
+                                <h3><span class="label label-default">About</span></h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tooltip" title="Contact us" style="font-size: 18px">
+                                <h3><span class="label label-default">Contact</span></h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--Menu content end-->
+    </div>
+</nav>
+<div class="container-fluid">
+
+</div>
+</body>
