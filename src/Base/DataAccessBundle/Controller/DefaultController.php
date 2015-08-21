@@ -2,6 +2,7 @@
 
 namespace Base\DataAccessBundle\Controller;
 
+use Base\DataAccessBundle\Entity\Job;
 use Base\DataAccessBundle\Entity\Student;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -20,7 +21,29 @@ class DefaultController extends Controller
 
     public function enterJobAction()
     {
-        return $this->render('BaseDataAccessBundle:JobViews:enter_job.html.twig');
+        $job = new Job();
+        $form = $this->createFormBuilder($job)
+            ->add('category', 'text')
+            ->add('description', 'text')
+            ->add('date', 'date')
+            ->add('budget', 'text')
+            ->add('save', 'submit')
+            ->getForm();
+
+        return $this->render('BaseDataAccessBundle:JobViews:enter_job.html.twig', array(
+            'form' => $form->createView()
+        ));
+
+        if ($form->isValid()) {
+            // perform some action, such as saving the task to the database
+
+            return $this->redirectToRoute('task_success');
+        }
+    }
+
+    public function successAction(){
+        return $this->render('BaseDataAccessBundle:Default:job_success.html.twig')
+    }
 
     public function persistStudent(){
         $student = new Student();
@@ -29,6 +52,5 @@ class DefaultController extends Controller
 
         $em->persist($student);
         $em->flush();
-
     }
 }

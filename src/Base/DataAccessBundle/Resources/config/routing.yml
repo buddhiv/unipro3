@@ -9,3 +9,7 @@ base_home:
 enter_job:
     path:     /enterJob
     defaults: { _controller: BaseDataAccessBundle:Default:enterJob }
+
+task_success:
+    path:     /success
+    defaults: { _controller: BaseDataAccessBundle:Default:success }
